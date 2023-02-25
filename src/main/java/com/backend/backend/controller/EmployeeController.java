@@ -38,6 +38,11 @@ public class EmployeeController {
     public ResponseEntity<Employee> getemployeeById(@PathVariable("id") long employeeId ){
         return new ResponseEntity<Employee>( employeeService.getEmployeeById( employeeId ) , null , HttpStatus.OK   ) ;
     }
+    //http://localhost:8080/api/employees/1/
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> udpateEmployee( @PathVariable("id") long id , @RequestBody Employee employee ){
+        return new ResponseEntity<Employee>( employeeService.updateEmployee( employee , id ) , HttpStatus.OK ) ;
+    }
 
 
 }
