@@ -43,6 +43,16 @@ public class EmployeeController {
     public ResponseEntity<Employee> udpateEmployee( @PathVariable("id") long id , @RequestBody Employee employee ){
         return new ResponseEntity<Employee>( employeeService.updateEmployee( employee , id ) , HttpStatus.OK ) ;
     }
+    // http://localhost:8080/api/employees/1
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id ){
+        //delete employee form DB
+        employeeService.deleteEmployee( id );
+
+        return new ResponseEntity<String>( "Employee deleted successfully "  , HttpStatus.OK ) ;
+
+
+    }
 
 
 }
